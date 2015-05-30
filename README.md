@@ -19,7 +19,7 @@ var cache = new PlasmaCache();
 
 ## API
 
-### [PlasmaCache](index.js#L25)
+### [PlasmaCache](index.js#L23)
 
 Create an instance of `PlasmaCache` with the given `options`.
 
@@ -27,11 +27,11 @@ Create an instance of `PlasmaCache` with the given `options`.
 
 * `options` **{Object}**
 
-### [.plasma](index.js#L41)
+### [.plasma](index.js#L39)
 
-Extend the `data` object with the value returned by [plasma].
+Extend the `data` object with the value returned by [plasma](https://github.com/jonschlinkert/plasma).
 
-See the [plasma] documentation for all available options.
+See the [plasma](https://github.com/jonschlinkert/plasma) documentation for all available options.
 
 **Params**
 
@@ -46,9 +46,9 @@ cache
   .plasma({fez: 'bang'});
 ```
 
-### [.process](index.js#L54)
+### [.process](index.js#L52)
 
-Use [expander] to recursively expand template strings into
+Use [expander](https://github.com/tkellen/expander) to recursively expand template strings into
 their resolved values.
 
 **Params**
@@ -63,7 +63,7 @@ cache.process({a: '<%= b %>', b: 'c'});
 //=> {a: 'c', b: 'c'}
 ```
 
-### [.flattenData](index.js#L83)
+### [.flattenData](index.js#L81)
 
 If a `data` property is on the given `data` object
 (e.g. `data.data`, like when files named `data.json`
@@ -75,7 +75,7 @@ just `data`
 * `data` **{Object}**
 * `returns` **{Object}**: Flattened object.
 
-### [.extendData](index.js#L97)
+### [.extendData](index.js#L95)
 
 Extend the `cache.data` object with the given data. This
 method is chainable.
@@ -90,7 +90,7 @@ cache
   .extendData({fez: 'bang'});
 ```
 
-### [.data](index.js#L130)
+### [.data](index.js#L128)
 
 Extend the `cache.data` object with data from a JSON
 or YAML file, or by passing an object directly - glob
