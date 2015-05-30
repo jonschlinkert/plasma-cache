@@ -11,9 +11,7 @@ var plasma = require('plasma');
 var expander = require('expander');
 var extend = require('extend-shallow');
 var functions = require('filter-functions');
-var typeOf = require('kind-of');
 var omit = require('object.omit');
-
 
 /**
  * Create an instance of `PlasmaCache` with the given `options`.
@@ -31,7 +29,7 @@ function PlasmaCache(options) {
 /**
  * Extend the `data` object with the value returned by [plasma].
  *
- * See the [plasma] documentation for all available options.
+ * See the [plasma][] documentation for all available options.
  *
  * @param {Object|String|Array} `data` File path(s), glob pattern, or object of data.
  * @param {Object} `options` Options to pass to plasma.
@@ -43,7 +41,7 @@ PlasmaCache.prototype.plasma = function() {
 };
 
 /**
- * Use [expander] to recursively expand template strings into
+ * Use [expander][] to recursively expand template strings into
  * their resolved values.
  *
  * @param {*} `lookup` Any value to process, usually strings with a cache template, like `<%= foo %>` or `${foo}`.
