@@ -1,6 +1,6 @@
 # plasma-cache [![NPM version](https://badge.fury.io/js/plasma-cache.svg)](http://badge.fury.io/js/plasma-cache)
 
-> Object cache for plasma.
+> Object cache for Plasma.
 
 ## Install
 

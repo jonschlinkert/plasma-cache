@@ -1,6 +1,6 @@
 {
   "name": "plasma-cache",
-  "description": "Object cache for plasma.",
+  "description": "Object cache for Plasma.",
   "version": "0.1.0",
   "homepage": "https://github.com/jonschlinkert/plasma-cache",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -23,7 +23,6 @@
     "expander": "^0.3.3",
     "extend-shallow": "^1.1.4",
     "filter-functions": "^0.1.0",
-    "kind-of": "^1.1.0",
     "object.omit": "^1.1.0",
     "plasma": "^0.8.2"
   },
@@ -31,5 +30,21 @@
     "mocha": "*",
     "should": "*"
   },
-  "keywords": []
+  "keywords": [
+    "cache",
+    "config",
+    "data",
+    "extend",
+    "file",
+    "fs",
+    "get",
+    "hash",
+    "json",
+    "object",
+    "read",
+    "set",
+    "storage",
+    "store",
+    "yaml"
+  ]
 }
