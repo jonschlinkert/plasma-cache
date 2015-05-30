@@ -10,6 +10,12 @@ Install with [npm](https://www.npmjs.com/)
 $ npm i plasma-cache --save
 ```
 
+Install with [bower](http://bower.io/)
+
+```sh
+$ bower install plasma-cache --save
+```
+
 ## Usage
 
 ```js
