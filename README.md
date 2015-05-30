@@ -1,6 +1,6 @@
 # plasma-cache [![NPM version](https://badge.fury.io/js/plasma-cache.svg)](http://badge.fury.io/js/plasma-cache)
 
-> Object cache for Plasma.
+> Object cache for [Plasma](https://github.com/jonschlinkert/plasma).
 
 ## Install
 
@@ -155,7 +155,7 @@ Pull requests and stars are always welcome. For bugs and feature requests, [plea
 
 ## License
 
-Copyright © 2015 Jon Schlinkert
+Copyright © 2015 [Jon Schlinkert](https://github.com/jonschlinkert)
 Released under the MIT license.
 
 ***
