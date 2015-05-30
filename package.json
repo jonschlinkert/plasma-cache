@@ -1,0 +1,35 @@
+{
+  "name": "plasma-cache",
+  "description": "Object cache for plasma.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/plasma-cache",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/plasma-cache",
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/plasma-cache/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "expander": "^0.3.3",
+    "extend-shallow": "^1.1.4",
+    "filter-functions": "^0.1.0",
+    "kind-of": "^1.1.0",
+    "object.omit": "^1.1.0",
+    "plasma": "^0.8.2"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "keywords": []
+}
