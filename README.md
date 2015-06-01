@@ -48,7 +48,28 @@ cache
   .plasma({fez: 'bang'});
 ```
 
-### [.process](index.js#L69)
+### [.dataLoader](index.js#L79)
+
+Register a `dataLoader` that will read and load data from files with the given `ext`.
+
+**Params**
+
+* `ext` **{String}**: The extension of files to read.
+* `fn` **{String}**: The loader function
+
+**Example**
+
+```js
+var fs = require('fs');
+var yaml = require('js-yaml');
+
+plasma.dataLoader('yml', function (fp) {
+  var str = fs.readFileSync(fp, 'utf8');
+  return yaml.safeLoad(str);
+});
+```
+
+### [.process](index.js#L92)
 
 Use [expander](https://github.com/tkellen/expander) to recursively expand template strings into
 their resolved values.
@@ -65,7 +86,7 @@ cache.process({a: '<%= b %>', b: 'c'});
 //=> {a: 'c', b: 'c'}
 ```
 
-### [.flattenData](index.js#L95)
+### [.flattenData](index.js#L118)
 
 If a `data` property is on the given `data` object
 (e.g. `data.data`, like when files named `data.json`
@@ -77,7 +98,7 @@ just `data`
 * `data` **{Object}**
 * `returns` **{Object}**: Flattened object.
 
-### [.extendData](index.js#L109)
+### [.extendData](index.js#L132)
 
 Extend the `cache.data` object with the given data. This
 method is chainable.
@@ -92,7 +113,7 @@ cache
   .extendData({fez: 'bang'});
 ```
 
-### [.data](index.js#L138)
+### [.data](index.js#L161)
 
 Extend the `cache.data` object with data from a JSON
 or YAML file, or by passing an object directly - glob
