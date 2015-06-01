@@ -7,23 +7,40 @@
 
 'use strict';
 
-var plasma = require('plasma');
+var Emitter = require('component-emitter');
+var Plasma = require('plasma');
 var expander = require('expander');
 var extend = require('extend-shallow');
 var functions = require('filter-functions');
 var omit = require('object.omit');
 
 /**
- * Create an instance of `PlasmaCache` with the given `options`.
+ * Initialize a new `PlasmaCache`.
  *
- * @param {Object} `options`
  * @api public
  */
 
-function PlasmaCache(options) {
-  this.cache = {};
-  this.cache.data = {};
-  this._plasma = new plasma(this.cache.data);
+function PlasmaCache(obj) {
+  Emitter.call(this);
+  this._plasma = new Plasma();
+  this.cache = {data: {}};
+  if (obj) mixin(obj);
+}
+
+Emitter(PlasmaCache.prototype);
+
+/**
+ * Mix PlasmaCache properties into `obj`
+ *
+ * @param {Object} obj
+ * @return {Object}
+ */
+
+function mixin(obj) {
+  for (var key in PlasmaCache.prototype) {
+    obj[key] = PlasmaCache.prototype[key];
+  }
+  return obj;
 }
 
 /**
@@ -52,18 +69,15 @@ PlasmaCache.prototype.plasma = function() {
 PlasmaCache.prototype.process = function(lookup, context) {
   context = context || lookup || this.cache.data;
   lookup = lookup || context;
-
   var len = arguments.length;
   if (len === 2) {
     context = extend({}, context, lookup);
   }
-
-
   var res = expander.process(context, lookup, {
     imports: functions(context)
   });
-
   if (!len) extend(this.cache.data, res);
+  this.emit('processData');
   return res;
 };
 
@@ -96,20 +110,16 @@ PlasmaCache.prototype.extendData = function() {
   var len = arguments.length;
   var args = new Array(len);
   var data = {};
-
   for (var i = 0; i < len; i++) {
     args[i] = arguments[i];
   }
-
   if (typeof args[0] === 'string') {
     data[args.shift()] = extend.apply(extend, args);
-    // this.emit('extendData');
   } else {
     data = extend.apply(extend, [data].concat(args));
   }
-
-  // this.emit('extendData');
   extend(this.cache.data, data);
+  this.emit('extendData');
   return this;
 };
 
@@ -152,7 +162,7 @@ PlasmaCache.prototype.data = function() {
   }
 
   this.extendData(o);
-  // this.emit('data');
+  this.emit('data');
   return this;
 };
 
