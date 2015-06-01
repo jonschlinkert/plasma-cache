@@ -8,10 +8,10 @@
 'use strict';
 
 var Emitter = require('component-emitter');
-var Plasma = require('plasma');
 var expander = require('expander');
 var extend = require('extend-shallow');
 var functions = require('filter-functions');
+var Plasma = require('plasma');
 var omit = require('object.omit');
 
 /**
@@ -55,6 +55,29 @@ function mixin(obj) {
 
 PlasmaCache.prototype.plasma = function() {
   return this._plasma.load.apply(this._plasma, arguments);
+};
+
+/**
+ * Register a `dataLoader` that will read and load data from
+ * files with the given `ext`.
+ *
+ * ```js
+ * var fs = require('fs');
+ * var yaml = require('js-yaml');
+ *
+ * plasma.dataLoader('yml', function (fp) {
+ *   var str = fs.readFileSync(fp, 'utf8');
+ *   return yaml.safeLoad(str);
+ * });
+ * ```
+ *
+ * @param {String} `ext` The extension of files to read.
+ * @param {String} `fn` The loader function
+ * @api public
+ */
+
+PlasmaCache.prototype.dataLoader = function() {
+  return this._plasma.loader.apply(this._plasma, arguments);
 };
 
 /**
