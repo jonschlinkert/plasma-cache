@@ -10,13 +10,13 @@
 /* deps: mocha */
 var fs = require('fs');
 var should = require('should');
-var Plasma = require('..');
+var PlasmaCache = require('..');
 var yaml = require('js-yaml');
 var plasma;
 
 describe('plasma data', function() {
   beforeEach(function() {
-    plasma = new Plasma();
+    plasma = new PlasmaCache({plasma: require('plasma')});
     plasma.dataLoader('yml', function (fp) {
       var str = fs.readFileSync(fp, 'utf8');
       return yaml.safeLoad(str);

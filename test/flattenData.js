@@ -9,12 +9,12 @@
 
 /* deps: mocha */
 var should = require('should');
-var Plasma = require('..');
+var PlasmaCache = require('..');
 var plasma;
 
 describe('plasma data', function() {
   beforeEach(function() {
-    plasma = new Plasma();
+    plasma = new PlasmaCache({plasma: require('plasma')});
   });
 
   describe('.flattenData()', function() {

@@ -7,11 +7,11 @@
 
 'use strict';
 
+var lazy = require('lazy-cache');
 var Emitter = require('component-emitter');
-var expander = require('expander');
+var expander = lazy(require)('expander');
 var extend = require('extend-shallow');
 var functions = require('filter-functions');
-var Plasma = require('plasma');
 var omit = require('object.omit');
 
 /**
@@ -20,9 +20,11 @@ var omit = require('object.omit');
  * @api public
  */
 
-function PlasmaCache(obj) {
+function PlasmaCache(options, obj) {
   Emitter.call(this);
-  this._plasma = new Plasma();
+  this.options = options || {};
+  var Plasma = this.options.plasma;
+  this.options.plasma = new Plasma();
   this.cache = {data: {}};
   if (obj) mixin(obj);
 }
@@ -54,7 +56,8 @@ function mixin(obj) {
  */
 
 PlasmaCache.prototype.plasma = function() {
-  return this._plasma.load.apply(this._plasma, arguments);
+  var plasma = this.options.plasma;
+  return plasma.load.apply(plasma, arguments);
 };
 
 /**
@@ -77,7 +80,8 @@ PlasmaCache.prototype.plasma = function() {
  */
 
 PlasmaCache.prototype.dataLoader = function() {
-  return this._plasma.loader.apply(this._plasma, arguments);
+  var plasma = this.options.plasma;
+  return plasma.dataLoader.apply(plasma, arguments);
 };
 
 /**
@@ -96,7 +100,7 @@ PlasmaCache.prototype.process = function(lookup, context) {
   if (len === 2) {
     context = extend({}, context, lookup);
   }
-  var res = expander.process(context, lookup, {
+  var res = expander().process(context, lookup, {
     imports: functions(context)
   });
   if (!len) extend(this.cache.data, res);

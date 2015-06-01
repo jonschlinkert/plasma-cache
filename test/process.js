@@ -9,13 +9,13 @@
 
 var assert = require('assert');
 var should = require('should');
-var Plasma = require('..');
+var PlasmaCache = require('..');
 var plasma;
 
 
 describe('plasma process', function () {
   beforeEach(function() {
-    plasma = new Plasma();
+    plasma = new PlasmaCache({plasma: require('plasma')});
     plasma.cache.data = {};
   });
 
