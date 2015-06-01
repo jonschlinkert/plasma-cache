@@ -1,7 +1,7 @@
 {
   "name": "plasma-cache",
   "description": "Object cache for [Plasma].",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/jonschlinkert/plasma-cache",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/plasma-cache",
